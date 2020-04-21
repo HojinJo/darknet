@@ -362,6 +362,7 @@ void forward_network(network *netp)
     #else
         if (netp->gpu_index >= 0)
         {
+            fprintf(stderr,"forward_network_gpu");
             forward_network_gpu(netp);
             return;
         }
@@ -1094,7 +1095,9 @@ void forward_network_gpu(network *netp)
         {
             fill_gpu(l.outputs * l.batch, 0, l.delta_gpu, 1);
         }
+         fprintf(stderr,"forward_gpu_start");
         l.forward_gpu(l, net);
+         fprintf(stderr,"forward_gpu_end");
         net.input_gpu = l.output_gpu;
         net.input = l.output;
         if (l.truth)

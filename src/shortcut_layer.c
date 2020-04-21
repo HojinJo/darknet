@@ -68,6 +68,7 @@ void resize_shortcut_layer(layer *l, int w, int h)
 
 void forward_shortcut_layer(const layer l, network net)
 {
+    fprintf(stderr,"****forward shortcut****");
     copy_cpu(l.outputs*l.batch, net.input, 1, l.output, 1);
     shortcut_cpu(l.batch, l.w, l.h, l.c, net.layers[l.index].output, l.out_w, l.out_h, l.out_c, l.alpha, l.beta, l.output);
     activate_array(l.output, l.outputs*l.batch, l.activation);
