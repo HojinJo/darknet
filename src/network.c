@@ -1095,19 +1095,18 @@ void forward_network_gpu(network *netp)
         {
             fill_gpu(l.outputs * l.batch, 0, l.delta_gpu, 1);
         }
-         fprintf(stderr,"forward_gpu_start");
+         fprintf(stderr,"forward_gpu_start\n");
         l.forward_gpu(l, net);
-         fprintf(stderr,"forward_gpu_end");
+         fprintf(stderr,"forward_gpu_end\n");
         net.input_gpu = l.output_gpu;
         net.input = l.output;
         if (l.truth)
         {
             net.truth_gpu = l.output_gpu;
             net.truth = l.output;
-        }
-    }
+        } 
     pull_network_output(netp);
-    calc_network_cost(netp);
+    //calc_network_cost(netp);
 }
 
 void backward_network_gpu(network *netp)
