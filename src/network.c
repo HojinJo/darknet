@@ -1104,7 +1104,8 @@ void forward_network_gpu(network *netp)
         {
             net.truth_gpu = l.output_gpu;
             net.truth = l.output;
-        } 
+        }
+    } 
     pull_network_output(netp);
     //calc_network_cost(netp);
 }
