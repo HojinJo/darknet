@@ -135,10 +135,10 @@ void forward_convolutional_layer_gpu(convolutional_layer l, network net)
                 im2col_gpu(im, l.c/l.groups, l.h, l.w, l.size, l.stride, l.pad, b);
             }
             gemm_gpu(0,0,m,n,k,1,a,k,b,n,1,c,n);
+	    cudaDeviceSynchronize();
         }
     }
 #endif
-
     if (l.batch_normalize) {
             forward_batchnorm_layer_gpu(l, net);
     } else {

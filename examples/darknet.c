@@ -659,7 +659,6 @@ int main()
             exit(0);
         }
     }
-
     for (int i = 0; i < n_des; i++)
     {
         pthread_join(networkArray_des[i], NULL);
@@ -676,7 +675,6 @@ int main()
     {
         pthread_join(networkArray_alex[i], NULL);
     }
-
 
 #if 0
     //kmsjames 2020 0215
